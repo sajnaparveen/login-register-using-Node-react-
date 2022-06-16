@@ -1,9 +1,9 @@
-*{
+/* *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     margin-top: 30px;
-}
+} */
 body{
     background: rgb(230, 233, 233);
 }
@@ -36,3 +36,17 @@ margin-left: 10px;
     border: 1px solid;
     color:black;
 }
+.login{
+
+    margin-right: 20pc;
+    }
+    .forgot{
+        margin-right: 29pc;
+    }
+    .loginpage{
+ 
+    text-decoration: underline;
+    color: rgb(21, 110, 242);
+    margin-top: -24px;
+    margin-left: 52%;
+    }

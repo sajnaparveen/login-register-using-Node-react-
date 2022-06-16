@@ -5,14 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './Login.css'
 import axios from 'axios';
 
-const Register = (setLoginStatus)=>{
+const Login = ()=>{
  
 const navigate=useNavigate()
     const [ user, setUser] = useState({
         userName: "",
         password:""
     })
-
+    // const [userRole, setUserRole] = useState()
     const handleChange = e => {
         const { name, value } = e.target
         setUser({
@@ -29,14 +29,19 @@ const navigate=useNavigate()
        axios.post("http://192.168.1.4:7000/api/v1/user/loginpage",user)
        .then((res)=>{
         alert(res.data.message)
-localStorage.setItem("token",res.data.data)
-console.log("token",res.data.data)
-// localStorage.setItem("loginStatus",1)
-// console.log("loginStatus", localStorage.getItem("loginStatus"))
-// let status = localStorage.getItem("loginStatus")
-// setLoginStatus(status)
+        // setUserRole(res.data.data.role)
+        // console.log("dfgtrhr",setUserRole(res.data.data.role))
+localStorage.setItem("token",res.data.data.jwttoken)
+localStorage.setItem("uuid",res.data.data.uuid)
+
 if(localStorage.getItem("token")){
-navigate("/product")
+    // console.log("ress",userRole)
+    if(res.data.data.role==="admin"){
+        navigate("/admin")
+    }else{
+        navigate("/product",{state:{userRole:res.data.data.role}})
+    }
+
 }
         
        }).catch((error)=>{
@@ -68,7 +73,8 @@ navigate("/product")
                      <button type="button" onClick={postDatas} className="btn1 mt-3 mb-5">Sign Up</button>
                  </div>
                  </div>
-                 <p> Already have an account?<a href="#" onClick={()=>navigate("/")}>Login Here</a></p>
+                 <a className="forgot" href="#">Forgot password</a>
+                 <p className="login"> Already have an account?<a href="#" onClick={()=>navigate("/")}>Login Here</a></p>
                  {/* <button onClick={()=>navigate("/login")} >login</button> */}
              </form>
         </div>
@@ -79,4 +85,4 @@ navigate("/product")
     )
 }
 
-export default Register
+export default Login

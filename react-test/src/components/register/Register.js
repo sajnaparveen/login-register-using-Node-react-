@@ -38,6 +38,7 @@ const navigate=useNavigate()
        })
      }
     return(
+       
       <section className="form my-4 mx-5">
     <div className="container">
     <div className="row">
@@ -72,7 +73,8 @@ const navigate=useNavigate()
                      <button type="button" onClick={postDatas} className="btn1 mt-3 mb-5">Sign Up</button>
                  </div>
                  </div>
-                 <p> Already have an account?<a href="#" onClick={()=>navigate("/login")}>Login Here</a></p>
+                 <a className="forgot" href="#">Forgot password</a>
+                 <p className="login"> Already have an account?<span className="loginpage" onClick={()=>navigate("/login")} >Login Here</span></p>
                  {/* <button onClick={()=>navigate("/login")} >login</button> */}
              </form>
         </div>
@@ -80,6 +82,7 @@ const navigate=useNavigate()
 </div>
 
       </section> 
+
     )
 }
 
